@@ -321,6 +321,29 @@ input[type=file]::file-selector-button{font:inherit;font-weight:700;font-size:va
   .pb-slot{padding:6px 2px}
 }
 
+/* ---- EduNexus Pro ---- */
+.ultra-chip{display:inline-flex;align-items:center;padding:4px 12px;border-radius:99px;font-size:11px;font-weight:800;
+  letter-spacing:.09em;text-transform:uppercase;color:#12021c;background:linear-gradient(100deg,#ff52d9,#31e6ff,#ffd36b,#ff52d9);
+  background-size:250% 100%;animation:glint 4s linear infinite}
+.pb-name.ns-ultra-neon{background-image:linear-gradient(100deg,#ff52d9,#31e6ff 40%,#fff 50%,#31e6ff 60%,#ff52d9);
+  background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  text-shadow:none;animation:glint 3.4s linear infinite;
+  filter:drop-shadow(0 0 10px rgba(255,82,217,.55)) drop-shadow(0 0 22px rgba(49,230,255,.35))}
+.pro-hero{margin-top:4px;border-radius:20px;padding:56px 32px;text-align:center;border:1px solid rgba(255,82,217,.35);
+  background:radial-gradient(90% 140% at 50% 120%,rgba(255,82,217,.35),transparent 60%),
+             radial-gradient(70% 120% at 20% 0,rgba(49,230,255,.25),transparent 60%),linear-gradient(135deg,#1b0a45,#0a0a2e)}
+.pro-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:16px}
+.pro-card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px}
+.pro-card.best{border-color:rgba(255,82,217,.5);box-shadow:0 0 0 1px rgba(255,82,217,.25),0 14px 40px -18px rgba(255,82,217,.6)}
+.pro-price{font-size:46px;font-weight:800;letter-spacing:-2px;margin-top:4px}
+.pro-price span{font-size:18px;font-weight:600;color:var(--mute);letter-spacing:0}
+.pro-tag{position:absolute;top:-12px;right:18px;font-size:11px;font-weight:800;letter-spacing:.05em;padding:5px 12px;border-radius:99px;
+  color:#12021c;background:linear-gradient(100deg,#ff52d9,#31e6ff)}
+.pro-teaser{display:block;margin:14px 0;border-color:rgba(255,82,217,.35);
+  background:linear-gradient(120deg,rgba(255,82,217,.10),transparent 55%),var(--panel)}
+.pro-teaser:hover{border-color:rgba(255,82,217,.6)}
+.upgrade-link{color:#ff8ae4!important}
+.upgrade-link:hover{background:rgba(255,82,217,.12)!important}
 /* ---- calendar ---- */
 .cal-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
 .cal-day{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px;min-height:150px;display:flex;flex-direction:column;gap:7px}
@@ -1077,6 +1100,7 @@ const I = {
   ai:icon('<path d="M12 3v18M5 8l14 8M19 8L5 16"/>'),
   user:icon('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/>'),
   more:icon('<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>'),
+  spark:icon('<path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/>'),
   cal:icon('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/>'),
   settings:icon('<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>'),
   mirage:icon('<path d="M4 18c3-8 13-8 16 0"/><circle cx="12" cy="8" r="2"/>'),
@@ -1693,6 +1717,7 @@ V.profile = () => {
       ${me.role==="student"?`<a class="btn ghost sm" href="#/portfolio">Portfolio</a>`:""}</div></div>
   ${playerBanner(me, me.role==="student"?myBadgeCtx():{})}
   <div class="note" style="margin:8px 2px 0">Joined ${new Date(me.created_at).toLocaleDateString()}</div>
+  ${proCard()}
   ${customiser()}
   ${me.role==="student" ? `
   <div class="sec"></div>
@@ -2018,6 +2043,42 @@ const SCENES = {
        <path d='M1080 90 L1040 190 L1085 190 L1030 330 L1130 170 L1085 170 L1120 90Z' fill='#f4f7ff' filter='url(#bolt)'/>`);
   })(),
 
+  /* Neon Skyline: the Ultra banner that comes with Pro. Drawn from scratch —
+     a rain-lit city at night, no characters, no borrowed artwork. */
+  neonCity: (()=>{ const r = rng(211);
+    let towers = "", windows = "";
+    for(let i=0;i<46;i++){
+      const w = 26 + r()*70, x = -30 + i*36 + r()*10, h = 90 + r()*250, y = 400 - h;
+      const far = r() < .45;
+      towers += `<rect x='${x|0}' y='${y|0}' width='${w|0}' height='${h|0}' rx='3' fill='${far?"#141a4a":"#0b0f31"}' opacity='${far?.75:1}'/>`;
+      for(let gy = y + 14; gy < 392; gy += 16){
+        for(let gx = x + 7; gx < x + w - 7; gx += 13){
+          if(r() > .55) continue;
+          const c = r() < .5 ? "#31e6ff" : r() < .75 ? "#ff52d9" : "#ffd36b";
+          windows += `<rect x='${gx|0}' y='${gy|0}' width='5' height='7' fill='${c}' opacity='${(.35+r()*.6).toFixed(2)}'/>`;
+        }
+      }
+    }
+    const signs = Array.from({length:12},()=>{
+      const x = (r()*1560)|0, y = (120+r()*180)|0, w = (30+r()*90)|0, c = r()<.5?"#ff52d9":"#31e6ff";
+      return `<rect x='${x}' y='${y}' width='${w}' height='${(6+r()*10)|0}' rx='3' fill='${c}' opacity='.75' filter='url(#nglow)'/>`;
+    }).join("");
+    const rain = Array.from({length:90},()=>{ const x=(r()*1700-50)|0, y=(r()*400)|0;
+      return `<line x1='${x}' y1='${y}' x2='${x-7}' y2='${y+26}'/>`; }).join("");
+    const beams = Array.from({length:5},()=>{ const x=(r()*1600)|0;
+      return `<polygon points='${x},400 ${x-70},${(60+r()*120)|0} ${x+70},${(60+r()*120)|0}' fill='#ff52d9' opacity='.06'/>`; }).join("");
+    return SVG(`<linearGradient id='sky' x1='0' y1='0' x2='.4' y2='1'><stop offset='0' stop-color='#1b0a45'/><stop offset='.5' stop-color='#3b1178'/><stop offset='1' stop-color='#0a0a2e'/></linearGradient>
+      <radialGradient id='haze' cx='.62' cy='.85' r='.7'><stop offset='0' stop-color='#ff52d9' stop-opacity='.5'/><stop offset='1' stop-color='#ff52d9' stop-opacity='0'/></radialGradient>
+      <radialGradient id='haze2' cx='.2' cy='.9' r='.6'><stop offset='0' stop-color='#31e6ff' stop-opacity='.4'/><stop offset='1' stop-color='#31e6ff' stop-opacity='0'/></radialGradient>
+      <filter id='nglow' x='-60%' y='-60%' width='220%' height='220%'><feGaussianBlur stdDeviation='7' result='b'/><feMerge><feMergeNode in='b'/><feMergeNode in='b'/><feMergeNode in='SourceGraphic'/></feMerge></filter>`,
+      `<rect width='1600' height='400' fill='url(#sky)'/>
+       ${Array.from({length:70},()=>`<circle cx='${(r()*1600)|0}' cy='${(r()*180)|0}' r='${(.6+r()*1.4).toFixed(1)}' fill='#fff' opacity='${(.3+r()*.5).toFixed(2)}'/>`).join("")}
+       ${beams}${towers}${windows}${signs}
+       <rect width='1600' height='400' fill='url(#haze)'/><rect width='1600' height='400' fill='url(#haze2)'/>
+       <g stroke='#9fd8ff' stroke-width='1.1' opacity='.28'>${rain}</g>
+       <rect y='340' width='1600' height='60' fill='#05061c' opacity='.55'/>`);
+  })(),
+
   /* Aurora borealis: the legendary one. Flowing curtains of light over a starry sky */
   borealis: (()=>{ const r = rng(131);
     const stars = Array.from({length:110},()=>`<circle cx='${(r()*1600)|0}' cy='${(r()*400)|0}' r='${(.6+r()*1.6).toFixed(1)}' fill='#fff' opacity='${(.4+r()*.6).toFixed(2)}'/>`).join("");
@@ -2077,8 +2138,13 @@ const BANNERS = [
         [`15 badges (${Math.min(count(l),15)}/15)`, count(l)>=15]
       ] } }
 ];
+BANNERS.push({ id:"ultra-neon", name:"Neon Skyline", rarity:"ultra", plan:"pro", animated:true,
+  bg:scene(SCENES.neonCity),
+  unlock:{ text:"Included with EduNexus Pro", check:()=>isPro(), prog:()=>"Pro only" } });
 const bannerOf = id => BANNERS.find(b=>b.id===id) || BANNERS[0];
-const bannerUnlocked = (b, list) => !b.unlock || !!(list && list.__all) || b.unlock.check(list||[]);
+/* Pro is the one thing badges cannot earn. */
+const isPro = () => !!(S.me && (S.me.plan === "pro" || S.me.unlock_all));
+const bannerUnlocked = (b, list) => b.plan === "pro" ? isPro() : !b.unlock || !!(list && list.__all) || b.unlock.check(list||[]);
 
 /* ---- profile picture borders ----
    ring:  the band's colours (a conic gradient, so it can spin)
@@ -2103,6 +2169,9 @@ const BORDERS = [
       check:l=> has(l,"realdeal") && strongCount(l)>=2 && has(l,"streak14") && count(l)>=15,
       prog:l=>`${[has(l,"realdeal"), strongCount(l)>=2, has(l,"streak14"), count(l)>=15].filter(Boolean).length}/4 conditions` } }
 ];
+BORDERS.push({ id:"ultra-neon", name:"Neon", rarity:"ultra", plan:"pro", spin:true, glow:"#ff52d9",
+  ring:"conic-gradient(#ff52d9,#31e6ff,#a855f7,#ffd36b,#ff52d9)",
+  unlock:{ text:"Included with EduNexus Pro", check:()=>isPro(), prog:()=>"Pro only" } });
 const borderOf = id => BORDERS.find(b=>b.id===id) || BORDERS[0];
 
 /* ---- name styles: a font and a colour treatment for your name on the banner ---- */
@@ -2124,6 +2193,8 @@ const NAME_STYLES = [
       check:l=> has(l,"realdeal") && strongCount(l)>=2 && has(l,"streak14") && count(l)>=15,
       prog:l=>`${[has(l,"realdeal"), strongCount(l)>=2, has(l,"streak14"), count(l)>=15].filter(Boolean).length}/4 conditions` } }
 ];
+NAME_STYLES.push({ id:"ultra-neon", name:"Neon Ultra", rarity:"ultra", plan:"pro",
+  unlock:{ text:"Included with EduNexus Pro", check:()=>isPro(), prog:()=>"Pro only" } });
 const nameStyleOf = id => NAME_STYLES.find(n=>n.id===id) || NAME_STYLES[0];
 
 /* ---- teachers get their own set: quieter, professional, and all available.
@@ -2180,7 +2251,8 @@ const TIERS = {
   common:    { label:"Common",    a:"#2fe3c0", b:"#127a68" },
   rare:      { label:"Rare",      a:"#dfe8f2", b:"#7c8fa6" },
   epic:      { label:"Epic",      a:"#c6a8ff", b:"#6a45c2" },
-  legendary: { label:"Legendary", a:"#ffe08a", b:"#c28a1c" }
+  legendary: { label:"Legendary", a:"#ffe08a", b:"#c28a1c" },
+  ultra:     { label:"Ultra",     a:"#ff52d9", b:"#31e6ff" }
 };
 const GLYPH = {
   moon:'<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/>',
@@ -3287,12 +3359,77 @@ V.cal_timetable = () => {
    : empty("Your week is empty","Add your lessons above. Once they're in, study sessions get planned around them instead of on top of them.")}`;
 };
 
+/* ================= EduNexus Pro ================= */
+const PRO_FEATURES = [
+  ["Neon Skyline banner","The Ultra-rarity banner. A rain-lit city that moves, and the only banner no badge can unlock."],
+  ["Neon border and name","A matching profile ring and name style, both animated."],
+  ["Ultra rarity on your profile","Shown to anyone who sees your banner, including your teachers."],
+  ["Supports the platform","Pro keeps EduNexus running and pays for the AI behind marking and Edu AI."]
+];
+V.upgrade = () => {
+  const pro = isPro();
+  const link = (url, ref) => url ? `${url}${url.includes("?")?"&":"?"}client_reference_id=${encodeURIComponent(S.me.id)}` : "";
+  const monthly = link(CFG.PRO_MONTHLY_URL), yearly = link(CFG.PRO_YEARLY_URL);
+  return `
+  <div class="topbar"><div><h1 class="h1">EduNexus Pro</h1>
+    <div class="sub">${pro ? "You're on Pro. Thank you — it genuinely keeps this running." : "Everything you already use stays free. Pro is for the people who want to look the part."}</div></div>
+    ${pro?`<span class="chip ultra-chip">Pro</span>`:""}</div>
+
+  <div class="pro-hero">
+    <div class="pb-name ns-ultra-neon" style="font-size:44px">Neon Skyline</div>
+    <p class="note" style="margin-top:6px;color:#e8d9ff">Ultra rarity · Pro only</p>
+  </div>
+
+  ${pro ? `
+    <div class="card" style="margin-top:16px">
+      <div class="set-row"><div><div class="set-title">Your plan</div>
+        <div class="note">Pro, billed ${esc(S.me.plan_interval||"monthly")}${S.me.plan_renews_at?` · renews ${new Date(S.me.plan_renews_at).toLocaleDateString()}`:""}</div></div>
+        ${CFG.PRO_PORTAL_URL?`<a class="btn ghost sm" href="${esc(CFG.PRO_PORTAL_URL)}" target="_blank" rel="noopener">Manage billing</a>`:""}</div>
+      <div class="set-row"><div><div class="set-title">Your Pro items</div>
+        <div class="note">Equip them from your profile.</div></div>
+        <a class="btn sm" href="#/profile">Open profile</a></div>
+    </div>`
+  : `
+    <div class="pro-grid">
+      <div class="pro-card">
+        <div class="note">Monthly</div>
+        <div class="pro-price">${esc(CFG.PRO_PRICE_MONTHLY||"$5")}<span>/month</span></div>
+        <p class="note" style="margin:8px 0 16px">Cancel any time.</p>
+        <button class="btn big" style="width:100%" data-act="pro-buy" data-url="${esc(monthly)}">Go Pro monthly</button>
+      </div>
+      <div class="pro-card best">
+        <span class="pro-tag">Best value · 2 months free</span>
+        <div class="note">Yearly</div>
+        <div class="pro-price">${esc(CFG.PRO_PRICE_YEARLY||"$50")}<span>/year</span></div>
+        <p class="note" style="margin:8px 0 16px">Works out at about $4.17 a month.</p>
+        <button class="btn big" style="width:100%" data-act="pro-buy" data-url="${esc(yearly)}">Go Pro yearly</button>
+      </div>
+    </div>`}
+
+  <div class="sec">What Pro includes</div>
+  <div class="card">
+    ${PRO_FEATURES.map(([t,d])=>`<div class="set-row"><div style="min-width:0">
+      <div class="set-title">${esc(t)}</div><div class="note">${esc(d)}</div></div>
+      <span class="chip ${pro?"teal":""}">${pro?"Yours":"Pro"}</span></div>`).join("")}
+  </div>
+  <div class="card flat" style="margin-top:14px"><div class="note">
+    Pro changes how your profile looks, never what you can learn. Lessons, tests, the genome, ExamLens, Mirage and Edu AI stay free for every student and teacher.</div></div>`;
+};
+const proCard = () => isPro() ? "" : `
+  <a class="card pro-teaser" href="#/upgrade">
+    <div class="row" style="gap:14px;align-items:center">
+      <span class="ultra-chip">Ultra</span>
+      <div style="min-width:0"><b style="font-size:var(--fs-3)">Neon Skyline, and two more Pro items</b>
+        <div class="note">${esc(CFG.PRO_PRICE_MONTHLY||"$5")} a month, or ${esc(CFG.PRO_PRICE_YEARLY||"$50")} a year</div></div>
+      <span class="btn sm" style="margin-left:auto">Upgrade</span></div></a>`;
+
 /* ---------------- settings ---------------- */
 const SET_TABS = [
   { id:"account",    name:"Account" },
   { id:"appearance", name:"Appearance" },
   { id:"behaviour",  name:"Notifications" },
   { id:"privacy",    name:"Privacy and data" },
+  { id:"billing",    name:"Plan and billing" },
   { id:"security",   name:"Security" },
   { id:"about",      name:"About" }
 ];
@@ -3451,6 +3588,24 @@ V.set_privacy = () => {
     <button class="btn ghost" data-act="set-delete">${busy("wipe","Delete my data")}</button>
   </div>`;
 };
+
+V.set_billing = () => `
+  <div class="card lens-card">
+    <div class="lens-head"><span class="lens-badge">${isPro()?"★":"·"}</span>
+      <div><b>${isPro()?"EduNexus Pro":"Free plan"}</b>
+        <div class="note">${isPro()
+          ? `Billed ${esc(S.me.plan_interval||"monthly")}${S.me.plan_renews_at?` · renews ${new Date(S.me.plan_renews_at).toLocaleDateString()}`:""}`
+          : "Everything you use today, at no cost."}</div></div></div>
+    <div class="row" style="gap:8px;margin-top:14px;flex-wrap:wrap">
+      ${isPro()
+        ? (CFG.PRO_PORTAL_URL?`<a class="btn" href="${esc(CFG.PRO_PORTAL_URL)}" target="_blank" rel="noopener">Manage billing</a>`:`<span class="note">Billing is managed by your payment provider.</span>`)
+        : `<a class="btn" href="#/upgrade">See EduNexus Pro</a>`}
+      <button class="btn ghost" data-act="pro-refresh">${busy("proRefresh","Refresh plan")}</button>
+    </div>
+    <div class="note" style="margin-top:12px">Just paid? Press Refresh. Your plan is set by the payment provider, not by the app, so it can take a few seconds.</div>
+  </div>
+  ${isPro()?"":`<div class="card" style="margin-top:14px">${PRO_FEATURES.map(([t,d])=>`<div class="set-row"><div style="min-width:0">
+    <div class="set-title">${esc(t)}</div><div class="note">${esc(d)}</div></div><span class="chip">Pro</span></div>`).join("")}</div>`}`;
 
 V.set_security = () => `
   <div class="sec" style="margin-top:0">Password</div>
@@ -3692,6 +3847,7 @@ function buildNav(){
   $("#nav").innerHTML = rs.filter(r=>r.g==="main").map(r=>`<a class="${on(r.h)}" href="${r.h}">${I[r.i]}${r.t}</a>`).join("")
     + (rs.some(r=>r.g==="quick")?`<div class="nav-label">Quick access</div>`:"")
     + rs.filter(r=>r.g==="quick").map(r=>`<a class="${on(r.h)}" href="${r.h}">${I[r.i]}${r.t}</a>`).join("")
+    + (isPro() ? "" : `<div class="nav-sep" role="separator"></div><a class="${on("#/upgrade")} upgrade-link" href="#/upgrade">${I.spark}Upgrade</a>`)
     + `<div class="nav-sep" role="separator"></div>`
     + `<a class="${on("#/settings")}" href="#/settings">${I.settings}Settings</a>`;
   /* A phone only fits four tabs comfortably. Everything else lives behind More,
@@ -4017,6 +4173,17 @@ const ACT = {
   },
   drill(el){ location.hash = el.dataset.to; },
   pref(el){ setPref(el.dataset.k, el.dataset.v); },
+  "pro-buy"(el){
+    const url = el.dataset.url;
+    if(!url) return toast("Checkout isn't connected yet. Add your payment links to config.js.");
+    window.open(url, "_blank", "noopener");
+    toast("Finish the payment in the new tab, then come back and press Refresh on the Billing tab.");
+  },
+  "pro-refresh"(){ withBusy("proRefresh", async ()=>{
+    const { data } = await sb.from("profiles").select("plan, plan_interval, plan_renews_at").eq("id",S.me.id).single();
+    if(data) Object.assign(S.me, data);
+    toast(isPro() ? "You're on Pro. Your items are ready on your profile." : "Still on the free plan. If you've just paid, give it a minute.");
+  }); },
   "cal-view"(el){ S.cal.view = el.dataset.v; rerender(); },
   "cal-nav"(el){ const d = calAnchor(), n = Number(el.dataset.d);
     if(S.cal.view==="month") d.setMonth(d.getMonth()+n); else d.setDate(d.getDate()+7*n);
@@ -4304,12 +4471,15 @@ const ACT = {
     S.ta.msgs = []; rerender();
   },
   async "name-style"(el){ if(await saveProfile({ name_style: el.dataset.id })){ toast("Name style equipped"); rerender(); } },
-  "name-locked"(el){ const n = nameStyleOf(el.dataset.id); const l = badgesFor(myBadgeCtx());
+  "name-locked"(el){ const n = nameStyleOf(el.dataset.id);
+    if(n.plan==="pro"){ toast("The Neon name style comes with EduNexus Pro"); return location.hash = "#/upgrade"; } const l = badgesFor(myBadgeCtx());
     toast(`${n.name} is locked. ${n.unlock.text} (${n.unlock.prog(l)})`); },
   async border(el){ if(await saveProfile({ border: el.dataset.id })){ toast("Border equipped"); rerender(); } },
-  "border-locked"(el){ const b = borderOf(el.dataset.id); const l = badgesFor(myBadgeCtx());
+  "border-locked"(el){ const b = borderOf(el.dataset.id);
+    if(b.plan==="pro"){ toast("The Neon border comes with EduNexus Pro"); return location.hash = "#/upgrade"; } const l = badgesFor(myBadgeCtx());
     toast(`${b.name} is locked. ${b.unlock.text} (${b.unlock.prog(l)})`); },
-  "banner-locked"(el){ const b = bannerOf(el.dataset.id); const l = badgesFor(myBadgeCtx());
+  "banner-locked"(el){ const b = bannerOf(el.dataset.id);
+    if(b.plan==="pro"){ toast("Neon Skyline comes with EduNexus Pro"); return location.hash = "#/upgrade"; } const l = badgesFor(myBadgeCtx());
     toast(`${b.name} is locked. ${b.unlock.text} (${b.unlock.prog(l)})`); },
   "badge-locked"(el){ const b = badgesFor(myBadgeCtx()).find(x=>x.id===el.dataset.id); if(b) toast(`Locked: ${b.desc}`); },
   async "badge-toggle"(el){

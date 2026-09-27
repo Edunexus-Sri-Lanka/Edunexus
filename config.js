@@ -10,5 +10,13 @@ window.EDUNEXUS_CONFIG = {
   SCHOOL_NAME: "Miracle International School",
   SUPPORT_EMAIL: "support@edunexus.lk",   // shown on the Settings → About tab
   PRIVACY_URL: "",                        // optional link to your privacy notice
-  TERMS_URL: ""                           // optional link to your terms
+  TERMS_URL: "",                          // optional link to your terms
+
+  /* EduNexus Pro — paste the checkout links from your payment provider
+     (Stripe Payment Links, Paddle, PayHere...). Leave blank until you have them. */
+  PRO_MONTHLY_URL: "",
+  PRO_YEARLY_URL: "",
+  PRO_PORTAL_URL: "",                     // where an existing subscriber manages billing
+  PRO_PRICE_MONTHLY: "$5",
+  PRO_PRICE_YEARLY: "$50"
 };
